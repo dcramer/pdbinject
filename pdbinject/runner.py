@@ -13,7 +13,7 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_addr='127.0.0.1',
         'PyRun_SimpleString("'
             'import sys; sys.path.insert(0, \\"%(path)s\\");'
             'from pdbinject.debugger import RemoteDebuggerThread;'
-            'thread = RemoteDebuggerThread(addr=\\"%(rpdb_addr)s\\", port=%(rdpb_port)d);'
+            'thread = RemoteDebuggerThread(\\"%(rpdb_addr)s\\", %(rdpb_port)d);'
             'thread.start();'
             'time.sleep(1)'
         '")' % dict(
