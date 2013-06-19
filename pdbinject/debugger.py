@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from . import rpdb
+from .rpdb import Rpdb
 
 from threading import Thread
 
@@ -12,5 +12,5 @@ class RemoteDebuggerThread(Thread):
         Thread.__init__(self)
 
     def run(self):
-        debugger = rpdb.Rpdb(addr=self.addr, port=self.port)
+        debugger = Rpdb(addr=self.addr, port=self.port)
         debugger.set_trace()
