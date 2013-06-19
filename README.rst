@@ -31,7 +31,14 @@ Usage
 	Process running with PID 6319
 
 	$ sudo pdbinject 6319
+	Remote PDB has been configured on port 4444
 
+  		nc 127.0.0.1 4444
+
+  	$ nc 127.0.0.1 4444
+	--Return--
+	> /home/ubuntu/pdbinject/pdbinject/debugger.py(16)run()->None
+	-> debugger.set_trace()
 
 Now have some fun:
 
