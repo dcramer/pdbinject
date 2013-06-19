@@ -6,8 +6,6 @@ from threading import Thread
 
 
 class DebuggerThread(Thread):
-    daemon = True
-
     def __init__(self, port=4444):
         self.port = port
         Thread.__init__(self)
