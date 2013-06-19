@@ -1,0 +1,3 @@
+
+develop:
+	pip install -e .
