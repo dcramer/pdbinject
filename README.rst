@@ -19,13 +19,15 @@ Homebrew fixes that:
 
 	brew install gdb
 
+.. note:: There's more steps, I gave up on figuring out how to make it work.
+
 
 Usage
 =====
 
 ::
 
-	$ python loop.py &
+	$ python example/loop.py &
 	Process running with PID 6319
 
-	$ pdbinject 6319
+	$ sudo pdbinject 6319
