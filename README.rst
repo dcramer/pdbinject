@@ -31,3 +31,13 @@ Usage
 	Process running with PID 6319
 
 	$ sudo pdbinject 6319
+
+
+Now have some fun:
+
+::
+
+	from guppy import hpy
+	hp = hpy()
+	heap = hp.heap()
+	heap.get_rp()
