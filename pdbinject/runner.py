@@ -11,7 +11,7 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_port=4444):
         'PyGILState_Ensure()',
         'PyRun_SimpleString("'
             'import sys; sys.path.insert(0, \\"%(path)s\\");'
-            'from pdbinject.debugger import DebuggerThread;'
+            'from pdbinject.debugger import RemoteDebuggerThread;'
             'thread = RemoteDebuggerThread(port=%(rdpb_port)d);'
             'thread.start();'
             'time.sleep(1)'
