@@ -18,5 +18,5 @@ class RemoteDebuggerThread(Thread):
         Thread.__init__(self)
 
     def run(self):
-        debugger = rpdb.Rpdb(addr=self.address, port=self.port)
+        debugger = rpdb.Rpdb(addr=self.addr, port=self.port)
         debugger.set_trace()

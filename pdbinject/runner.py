@@ -39,7 +39,7 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_addr='127.0.0.1',
     if p.returncode == 0 and rpdb_port:
         print("Remote PDB has been configured on port %s" % (rpdb_port,))
         print("")
-        print("  nc 127.0.0.1 %s" % (rpdb_port,))
+        print("  nc %s %s" % (rpdb_addr, rpdb_port,))
 
 
 def main():
