@@ -10,14 +10,14 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_port=None):
     gdb_cmds = [
         'PyGILState_Ensure()',
         'PyRun_SimpleString("'
-            'import sys; sys.path.insert(0, \\"%s\\");'
+            'import sys; sys.path.insert(0, \\"%(path)s\\");'
             'from pdbinject.debugger import DebuggerThread;'
             'thread = DebuggerThread();'
             'thread.start();'
             'time.sleep(1)'
-        '")' % (
-            os.path.join(os.path.dirname(__file__), os.pardir),
-            rpdb_port,
+        '")' % dict(
+            path=os.path.join(os.path.dirname(__file__), os.pardir),
+            rdpb_port=rpdb_port,
         ),
         'PyGILState_Release($1)',
     ]
