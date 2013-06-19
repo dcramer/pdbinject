@@ -4,7 +4,7 @@ import os
 import subprocess
 
 
-def inject(pid, verbose=False, gdb_prefix='', rpdb_port=None):
+def inject(pid, verbose=False, gdb_prefix='', rpdb_port=4444):
     """Executes a file in a running Python process."""
     # TODO: rpdb stuff
     gdb_cmds = [
