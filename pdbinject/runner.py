@@ -4,16 +4,17 @@ import os
 import subprocess
 
 
-def inject(pid, verbose=False, gdb_prefix='', rpdb_port=4444):
+def inject(pid, verbose=False, gdb_prefix='', rpdb_port=None):
     """Executes a file in a running Python process."""
+    # TODO: rpdb stuff
     gdb_cmds = [
         'PyGILState_Ensure()',
         'PyRun_SimpleString("'
             'import sys; sys.path.insert(0, \\"%s\\");'
-            'from pdbinject.rdb import DebuggerThread;'
-            'thread = DebuggerThread(port=%d);'
-            'thread.daemon = True;'
+            'from pdbinject.debugger import DebuggerThread;'
+            'thread = DebuggerThread();'
             'thread.start();'
+            'time.sleep(1)'
         '")' % (
             os.path.join(os.path.dirname(__file__), os.pardir),
             rpdb_port,
@@ -33,7 +34,7 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_port=4444):
         print(out)
         print(err)
 
-    if p.returncode == 0:
+    if p.returncode == 0 and rpdb_port:
         print("Remote PDB has been configured on port %s" % (rpdb_port,))
         print("")
         print("  nc 127.0.0.1 %s" % (rpdb_port,))
