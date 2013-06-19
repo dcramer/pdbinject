@@ -4,7 +4,8 @@ import os
 import subprocess
 
 
-def inject(pid, verbose=False, gdb_prefix='', rpdb_port=4444):
+def inject(pid, verbose=False, gdb_prefix='', rpdb_address='127.0.0.1',
+           rpdb_port=4444):
     """Executes a file in a running Python process."""
     # TODO: rpdb stuff
     gdb_cmds = [
@@ -12,11 +13,12 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_port=4444):
         'PyRun_SimpleString("'
             'import sys; sys.path.insert(0, \\"%(path)s\\");'
             'from pdbinject.debugger import RemoteDebuggerThread;'
-            'thread = RemoteDebuggerThread(port=%(rdpb_port)d);'
+            'thread = RemoteDebuggerThread(address=%(rpdb_address)s, port=%(rdpb_port)d);'
             'thread.start();'
             'time.sleep(1)'
         '")' % dict(
             path=os.path.join(os.path.dirname(__file__), os.pardir),
+            rpdb_address=rpdb_address,
             rdpb_port=rpdb_port,
         ),
         'PyGILState_Release($1)',
