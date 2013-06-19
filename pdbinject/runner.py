@@ -12,7 +12,7 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_port=None):
         'PyRun_SimpleString("'
             'import sys; sys.path.insert(0, \\"%(path)s\\");'
             'from pdbinject.debugger import DebuggerThread;'
-            'thread = DebuggerThread();'
+            'thread = RemoteDebuggerThread(port=%(rdpb_port)d);'
             'thread.start();'
             'time.sleep(1)'
         '")' % dict(
