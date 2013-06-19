@@ -1,14 +1,8 @@
 from __future__ import absolute_import
 
-import pdb
-import rpdb
+from . import rpdb
 
 from threading import Thread
-
-
-class DebuggerThread(Thread):
-    def run(self):
-        pdb.set_trace()
 
 
 class RemoteDebuggerThread(Thread):

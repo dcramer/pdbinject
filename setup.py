@@ -10,9 +10,6 @@ setup(
     url='http://github.com/dcramer/pdbinject',
     packages=find_packages(exclude=['example']),
     zip_safe=False,
-    install_requires=[
-        'rpdb',
-    ],
     entry_points={
         'console_scripts': [
             'pdbinject = pdbinject.runner:main',
