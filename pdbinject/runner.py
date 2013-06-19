@@ -10,7 +10,7 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_port=4444):
         'PyGILState_Ensure()',
         'PyRun_SimpleString("'
             'import sys; sys.path.insert(0, \\"%s\\");'
-            'from pdbinject import DebuggerThread;'
+            'from pdbinject.rdb import DebuggerThread;'
             'thread = DebuggerThread(port=%d);'
             'thread.daemon = True;'
             'thread.start();'
@@ -33,9 +33,10 @@ def inject(pid, verbose=False, gdb_prefix='', rpdb_port=4444):
         print(out)
         print(err)
 
-    print("Remote PDB has been configured on port %s" % (rpdb_port,))
-    print("")
-    print("  nc 127.0.0.1 %s" % (rpdb_port,))
+    if p.returncode == 0:
+        print("Remote PDB has been configured on port %s" % (rpdb_port,))
+        print("")
+        print("  nc 127.0.0.1 %s" % (rpdb_port,))
 
 
 def main():
