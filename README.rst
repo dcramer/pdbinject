@@ -5,7 +5,7 @@ You'll need GDB compiled with python support, and the ``pdbinject`` package:
 
 ::
 
-	easy_install install pdbinject
+	easy_install pdbinject
 
 
 OS X Notes
