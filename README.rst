@@ -48,3 +48,10 @@ Now have some fun:
 	hp = hpy()
 	heap = hp.heap()
 	heap.get_rp()
+
+To print the stacktrace across all the threads:
+
+::
+
+	import sys, traceback
+	for thread_id, stack in sys._current_frames().iteritems(): print 'Thread id: %s\n%s' % (thread_id, ''.join(traceback.format_stack(stack)))
